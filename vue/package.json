@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite"
   },
   "dependencies": {
     "@cosmjs/launchpad": "0.27.0",
