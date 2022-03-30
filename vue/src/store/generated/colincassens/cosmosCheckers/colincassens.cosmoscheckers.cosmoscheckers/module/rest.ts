@@ -9,6 +9,10 @@
  * ---------------------------------------------------------------
  */
 
+export interface CosmoscheckersMsgCreateGameResponse {
+  idValue?: string;
+}
+
 export interface CosmoscheckersNextGame {
   /** @format uint64 */
   idValue?: string;

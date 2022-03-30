@@ -10,7 +10,7 @@ import (
 var (
 	//ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
 	ErrInvalidCreator   = sdkerrors.Register(ModuleName, 1100, "creator address is invalid: %s")
-    ErrInvalidRed       = sdkerrors.Register(ModuleName, 1101, "red address is invalid: %s")
-    ErrInvalidBlack     = sdkerrors.Register(ModuleName, 1102, "black address is invalid: %s")
-    ErrGameNotParseable = sdkerrors.Register(ModuleName, 1103, "game cannot be parsed")
+	ErrInvalidRed       = sdkerrors.Register(ModuleName, 1101, "red address is invalid: %s")
+	ErrInvalidBlack     = sdkerrors.Register(ModuleName, 1102, "black address is invalid: %s")
+	ErrGameNotParseable = sdkerrors.Register(ModuleName, 1103, "game cannot be parsed")
 )
