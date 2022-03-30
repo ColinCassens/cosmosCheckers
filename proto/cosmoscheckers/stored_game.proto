@@ -1,0 +1,14 @@
+syntax = "proto3";
+package colincassens.cosmoscheckers.cosmoscheckers;
+
+option go_package = "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/types";
+
+message StoredGame {
+  string index = 1; 
+  string game = 2; 
+  string turn = 3; 
+  string red = 4; 
+  string black = 5; 
+  
+}
+
