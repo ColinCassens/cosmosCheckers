@@ -14,6 +14,8 @@ export interface CosmoscheckersMsgCreateGameResponse {
 }
 
 export interface CosmoscheckersNextGame {
+  creator?: string;
+
   /** @format uint64 */
   idValue?: string;
 }
@@ -55,6 +57,7 @@ export interface CosmoscheckersQueryParamsResponse {
 }
 
 export interface CosmoscheckersStoredGame {
+  creator?: string;
   index?: string;
   game?: string;
   turn?: string;
