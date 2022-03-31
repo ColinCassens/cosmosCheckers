@@ -27940,6 +27940,19 @@ definitions:
     properties:
       idValue:
         type: string
+  colincassens.cosmoscheckers.cosmoscheckers.MsgPlayMoveResponse:
+    type: object
+    properties:
+      idValue:
+        type: string
+      capturedX:
+        type: string
+        format: int64
+      capturedY:
+        type: string
+        format: int64
+      winner:
+        type: string
   colincassens.cosmoscheckers.cosmoscheckers.NextGame:
     type: object
     properties:

@@ -13,6 +13,17 @@ export interface CosmoscheckersMsgCreateGameResponse {
   idValue?: string;
 }
 
+export interface CosmoscheckersMsgPlayMoveResponse {
+  idValue?: string;
+
+  /** @format int64 */
+  capturedX?: string;
+
+  /** @format int64 */
+  capturedY?: string;
+  winner?: string;
+}
+
 export interface CosmoscheckersNextGame {
   creator?: string;
 

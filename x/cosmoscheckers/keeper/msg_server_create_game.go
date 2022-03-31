@@ -4,9 +4,9 @@ import (
 	"context"
 	"strconv"
 
+	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 	"github.com/colincassens/cosmosCheckers/x/cosmoscheckers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 )
 
 func (k msgServer) CreateGame(goCtx context.Context, msg *types.MsgCreateGame) (*types.MsgCreateGameResponse, error) {
