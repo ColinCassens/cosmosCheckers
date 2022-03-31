@@ -3,6 +3,7 @@ package keeper
 import (
 	"context"
 	"strings"
+	"strconv"
 
 	"github.com/colincassens/cosmosCheckers/x/cosmoscheckers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -60,6 +61,18 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 	storedGame.Game = game.String()
 	storedGame.Turn = game.Turn.Color
 	k.Keeper.SetStoredGame(ctx, storedGame)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, "checkers"),
+			sdk.NewAttribute(sdk.AttributeKeyAction, types.PlayMoveEventKey),
+			sdk.NewAttribute(types.PlayMoveEventCreator, msg.Creator),
+			sdk.NewAttribute(types.PlayMoveEventIdValue, msg.IdValue),
+			sdk.NewAttribute(types.PlayMoveEventCapturedX, strconv.FormatInt(int64(captured.X), 10)),
+			sdk.NewAttribute(types.PlayMoveEventCapturedY, strconv.FormatInt(int64(captured.Y), 10)),
+			sdk.NewAttribute(types.PlayMoveEventWinner, game.Winner().Color),
+		),
+	)
 
 	//Return Relevant info
 	return &types.MsgPlayMoveResponse{
