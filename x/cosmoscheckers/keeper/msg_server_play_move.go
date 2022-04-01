@@ -2,14 +2,13 @@ package keeper
 
 import (
 	"context"
-	"strings"
 	"strconv"
+	"strings"
 
+	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 	"github.com/colincassens/cosmosCheckers/x/cosmoscheckers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-
 )
 
 func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*types.MsgPlayMoveResponse, error) {
@@ -56,6 +55,9 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 	if moveErr != nil {
 		return nil, sdkerrors.Wrapf(moveErr, types.ErrWrongMove.Error())
 	}
+
+	//Increment Move Counter
+	storedGame.MoveCount++
 
 	//Store Info
 	storedGame.Game = game.String()

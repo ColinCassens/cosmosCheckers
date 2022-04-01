@@ -24,6 +24,8 @@ export interface CosmoscheckersMsgPlayMoveResponse {
   winner?: string;
 }
 
+export type CosmoscheckersMsgRejectGameResponse = object;
+
 export interface CosmoscheckersNextGame {
   creator?: string;
 
@@ -74,6 +76,9 @@ export interface CosmoscheckersStoredGame {
   turn?: string;
   red?: string;
   black?: string;
+
+  /** @format uint64 */
+  moveCount?: string;
 }
 
 export interface ProtobufAny {
