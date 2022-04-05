@@ -77,4 +77,9 @@ func (storedGame *StoredGame)GetPlayerAddress(color string) (address sdk.AccAddr
         rules.BLACK_PLAYER.Color: black,
     }[color]
 	return address, found, nil
-} 
+}
+
+func (storedGame *StoredGame) GetWinnerAddress() (address sdk.AccAddress, found bool, err error) {
+    address, found, err = storedGame.GetPlayerAddress(storedGame.Winner)
+    return address, found, err
+}
