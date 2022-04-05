@@ -16,6 +16,11 @@ func (k msgServer) RejectGame(goCtx context.Context, msg *types.MsgRejectGame) (
 	if !found {
 		return nil, sdkerrors.Wrapf(types.ErrGameNotFound, "game not found %s", msg.IdValue)
 	}
+
+	//If game is already won you cant reject
+	if storedGame.Winner != rules.NO_PLAYER.Color {
+		return nil, types.ErrGameFinished
+	}
 	
 	//Determine if the sender is a player and if they have already played
 	if strings.Compare(storedGame.Red, msg.Creator) == 0 {
