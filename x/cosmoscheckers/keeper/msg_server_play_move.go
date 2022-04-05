@@ -58,6 +58,7 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 
 	//Increment Move Counter
 	storedGame.MoveCount++
+	storedGame.Deadline = types.FormatDeadline(types.GetNextDeadline(ctx))
 
 	// Send to the back of the FIFO
 	nextGame, found := k.Keeper.GetNextGame(ctx)
@@ -71,7 +72,6 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 	storedGame.Turn = game.Turn.Color
 	k.Keeper.SetStoredGame(ctx, storedGame)
 	k.Keeper.SetNextGame(ctx, nextGame)
-
 
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(sdk.EventTypeMessage,

@@ -83,6 +83,7 @@ export interface CosmoscheckersStoredGame {
   moveCount?: string;
   beforeId?: string;
   afterId?: string;
+  deadline?: string;
 }
 
 export interface ProtobufAny {
