@@ -42,6 +42,7 @@ func (k msgServer) RejectGame(goCtx context.Context, msg *types.MsgRejectGame) (
 		panic("NextGame not found")
 	}
 	k.Keeper.RemoveFromFifo(ctx, &storedGame, &nextGame)
+	k.Keeper.MustRefundWager(ctx, &storedGame)
 
 	//Remove the game
 	k.Keeper.RemoveStoredGame(ctx, msg.IdValue)

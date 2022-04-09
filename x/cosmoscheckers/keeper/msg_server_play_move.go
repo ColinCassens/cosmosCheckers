@@ -46,6 +46,11 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 		return nil, types.ErrNotPlayerTurn
 	}
 
+	err = k.Keeper.CollectWager(ctx, &storedGame)
+	if err != nil {
+		return nil, err
+	}
+
 	//Move
 	captured, moveErr := game.Move(
 		rules.Pos{
@@ -75,7 +80,9 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 		k.Keeper.SendToFifoTail(ctx, &storedGame, &nextGame)
 	} else {
 		k.Keeper.RemoveFromFifo(ctx, &storedGame, &nextGame)
+		k.Keeper.MustPayWinnings(ctx, &storedGame)
 	}
+	
 	//Store Info
 	storedGame.Game = game.String()
 	storedGame.Turn = game.Turn.Color
