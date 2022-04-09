@@ -66,3 +66,7 @@ const (
     ForfeitGameEventIdValue = "IdValue"
     ForfeitGameEventWinner  = "Winner"
 )
+
+const (
+	StoredGameEventWager = "Wager"
+)

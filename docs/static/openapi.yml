@@ -120,6 +120,9 @@ paths:
                       type: string
                     winner:
                       type: string
+                    wager:
+                      type: string
+                      format: uint64
               pagination:
                 type: object
                 properties:
@@ -260,6 +263,9 @@ paths:
                     type: string
                   winner:
                     type: string
+                  wager:
+                    type: string
+                    format: uint64
         default:
           description: An unexpected error response.
           schema:
@@ -28027,6 +28033,9 @@ definitions:
               type: string
             winner:
               type: string
+            wager:
+              type: string
+              format: uint64
       pagination:
         type: object
         properties:
@@ -28096,6 +28105,9 @@ definitions:
             type: string
           winner:
             type: string
+          wager:
+            type: string
+            format: uint64
   colincassens.cosmoscheckers.cosmoscheckers.QueryParamsResponse:
     type: object
     properties:
@@ -28129,6 +28141,9 @@ definitions:
         type: string
       winner:
         type: string
+      wager:
+        type: string
+        format: uint64
   cosmos.base.query.v1beta1.PageRequest:
     type: object
     properties:

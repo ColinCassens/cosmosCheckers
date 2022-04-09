@@ -354,6 +354,7 @@ func New(
 	)
 
 	app.CosmoscheckersKeeper = *cosmoscheckersmodulekeeper.NewKeeper(
+		app.BankKeeper,
 		appCodec,
 		keys[cosmoscheckersmoduletypes.StoreKey],
 		keys[cosmoscheckersmoduletypes.MemStoreKey],

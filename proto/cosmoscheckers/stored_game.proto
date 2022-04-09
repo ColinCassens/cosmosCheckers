@@ -15,5 +15,6 @@ message StoredGame {
   string afterId = 9;
   string deadline = 10;
   string winner = 11;
+  uint64 wager = 12;
 }
 
