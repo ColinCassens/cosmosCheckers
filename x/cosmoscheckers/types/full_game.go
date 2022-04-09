@@ -1,10 +1,10 @@
 package types
 
 import (
-	"time"
 	"github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+	"time"
 )
 
 func (storedGame *StoredGame) GetCreatorAddress() (creator sdk.AccAddress, err error) {
@@ -51,37 +51,37 @@ func (storedGame StoredGame) Validate() (err error) {
 }
 
 func (storedGame *StoredGame) GetDeadlineAsTime() (deadline time.Time, err error) {
-    deadline, errDeadline := time.Parse(DeadlineLayout, storedGame.Deadline)
-    return deadline, sdkerrors.Wrapf(errDeadline, ErrInvalidDeadline.Error(), storedGame.Deadline)
+	deadline, errDeadline := time.Parse(DeadlineLayout, storedGame.Deadline)
+	return deadline, sdkerrors.Wrapf(errDeadline, ErrInvalidDeadline.Error(), storedGame.Deadline)
 }
 
 func FormatDeadline(deadline time.Time) string {
-    return deadline.UTC().Format(DeadlineLayout)
+	return deadline.UTC().Format(DeadlineLayout)
 }
 
 func GetNextDeadline(ctx sdk.Context) time.Time {
-    return ctx.BlockTime().Add(MaxTurnDurationInSeconds)
+	return ctx.BlockTime().Add(MaxTurnDurationInSeconds)
 }
 
-func (storedGame *StoredGame)GetPlayerAddress(color string) (address sdk.AccAddress, found bool, err error) {
+func (storedGame *StoredGame) GetPlayerAddress(color string) (address sdk.AccAddress, found bool, err error) {
 	red, err := storedGame.GetRedAddress()
 	if err != nil {
-        return nil, false, err
-    }
-    black, err := storedGame.GetBlackAddress()
-    if err != nil {
-        return nil, false, err
-    }
-    address, found = map[string]sdk.AccAddress{
-        rules.RED_PLAYER.Color:   red,
-        rules.BLACK_PLAYER.Color: black,
-    }[color]
+		return nil, false, err
+	}
+	black, err := storedGame.GetBlackAddress()
+	if err != nil {
+		return nil, false, err
+	}
+	address, found = map[string]sdk.AccAddress{
+		rules.RED_PLAYER.Color:   red,
+		rules.BLACK_PLAYER.Color: black,
+	}[color]
 	return address, found, nil
 }
 
 func (storedGame *StoredGame) GetWinnerAddress() (address sdk.AccAddress, found bool, err error) {
-    address, found, err = storedGame.GetPlayerAddress(storedGame.Winner)
-    return address, found, err
+	address, found, err = storedGame.GetPlayerAddress(storedGame.Winner)
+	return address, found, err
 }
 
 func (storedGame *StoredGame) GetWagerCoin() (wager sdk.Coin) {

@@ -77,5 +77,4 @@ func (k Keeper) ForfeitExpiredGames(goCtx context.Context) {
 
 	k.SetNextGame(ctx, nextGame)
 
-
 }

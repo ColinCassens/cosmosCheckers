@@ -1,10 +1,9 @@
 package keeper
 
-import	(
-	sdk "github.com/cosmos/cosmos-sdk/types"
+import (
 	"github.com/colincassens/cosmosCheckers/x/cosmoscheckers/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
-
 
 func (k Keeper) RemoveFromFifo(ctx sdk.Context, game *types.StoredGame, info *types.NextGame) {
 	if game.BeforeId != types.NoFifoIdKey {
@@ -42,7 +41,7 @@ func (k Keeper) SendToFifoTail(ctx sdk.Context, game *types.StoredGame, info *ty
 		game.BeforeId = types.NoFifoIdKey
 		game.AfterId = types.NoFifoIdKey
 	} else if info.FifoTail == types.NoFifoIdKey || info.FifoHead == types.NoFifoIdKey {
-		//Check for head or tail but not the other (ERROR) 
+		//Check for head or tail but not the other (ERROR)
 		panic("Linked List Error!! Fifo needs both head & tail")
 	} else if !(info.FifoTail == game.Index) {
 		// Make sure Game isnt already tail ^

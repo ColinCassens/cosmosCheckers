@@ -6,7 +6,6 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	// sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
-
 )
 
 func (k *Keeper) CollectWager(ctx sdk.Context, storedGame *types.StoredGame) error {
@@ -20,7 +19,7 @@ func (k *Keeper) CollectWager(ctx sdk.Context, storedGame *types.StoredGame) err
 		if err != nil {
 			panic(err.Error())
 		}
-		
+
 	} else if storedGame.MoveCount == 1 {
 		// Red pays
 		red, err := storedGame.GetRedAddress()
@@ -51,7 +50,7 @@ func (k *Keeper) MustPayWinnings(ctx sdk.Context, storedGame *types.StoredGame) 
 	} else if 1 < storedGame.MoveCount {
 		winnings = winnings.Add(winnings)
 	}
-	
+
 	err = k.bank.SendCoinsFromModuleToAccount(ctx, types.ModuleName, winner, sdk.NewCoins(winnings))
 	if err != nil {
 		panic(err.Error())

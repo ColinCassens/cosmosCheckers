@@ -4,10 +4,10 @@ import (
 	"context"
 	"strings"
 
+	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 	"github.com/colincassens/cosmosCheckers/x/cosmoscheckers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	rules "github.com/colincassens/cosmosCheckers/x/cosmoscheckers/rules"
 )
 
 func (k msgServer) RejectGame(goCtx context.Context, msg *types.MsgRejectGame) (*types.MsgRejectGameResponse, error) {
@@ -22,7 +22,7 @@ func (k msgServer) RejectGame(goCtx context.Context, msg *types.MsgRejectGame) (
 	if storedGame.Winner != rules.NO_PLAYER.Color {
 		return nil, types.ErrGameFinished
 	}
-	
+
 	//Determine if the sender is a player and if they have already played
 	if strings.Compare(storedGame.Red, msg.Creator) == 0 {
 		if 1 < storedGame.MoveCount {

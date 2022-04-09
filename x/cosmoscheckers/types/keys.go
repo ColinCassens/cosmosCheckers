@@ -47,24 +47,24 @@ const (
 )
 
 const (
-    RejectGameEventKey     = "GameRejected"
-    RejectGameEventCreator = "Creator"
-    RejectGameEventIdValue = "IdValue"
+	RejectGameEventKey     = "GameRejected"
+	RejectGameEventCreator = "Creator"
+	RejectGameEventIdValue = "IdValue"
 )
 
 const (
-    NoFifoIdKey = "-1"
+	NoFifoIdKey = "-1"
 )
 
 const (
-    MaxTurnDurationInSeconds = time.Duration(24 * 3_600 * 1000_000_000) // 1 day
-    DeadlineLayout           = "2006-01-02 15:04:05.999999999 +0000 UTC"
+	MaxTurnDurationInSeconds = time.Duration(24 * 3_600 * 1000_000_000) // 1 day
+	DeadlineLayout           = "2006-01-02 15:04:05.999999999 +0000 UTC"
 )
 
 const (
-    ForfeitGameEventKey     = "GameForfeited"
-    ForfeitGameEventIdValue = "IdValue"
-    ForfeitGameEventWinner  = "Winner"
+	ForfeitGameEventKey     = "GameForfeited"
+	ForfeitGameEventIdValue = "IdValue"
+	ForfeitGameEventWinner  = "Winner"
 )
 
 const (
@@ -72,7 +72,7 @@ const (
 )
 
 const (
-    CreateGameGas = 10
-    PlayMoveGas   = 10
-    RejectGameGas = 0
+	CreateGameGas = 10
+	PlayMoveGas   = 10
+	RejectGameGas = 0
 )

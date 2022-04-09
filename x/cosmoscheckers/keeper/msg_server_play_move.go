@@ -82,7 +82,7 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 		k.Keeper.RemoveFromFifo(ctx, &storedGame, &nextGame)
 		k.Keeper.MustPayWinnings(ctx, &storedGame)
 	}
-	
+
 	//Store Info
 	storedGame.Game = game.String()
 	storedGame.Turn = game.Turn.Color
@@ -112,5 +112,3 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 		Winner:    game.Winner().Color,
 	}, nil
 }
-
-
