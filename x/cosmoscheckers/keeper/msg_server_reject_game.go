@@ -58,5 +58,8 @@ func (k msgServer) RejectGame(goCtx context.Context, msg *types.MsgRejectGame) (
 		),
 	)
 
+	//Consume Gas
+	ctx.GasMeter().ConsumeGas(types.RejectGameGas, "Reject Game Gas")
+
 	return &types.MsgRejectGameResponse{}, nil
 }

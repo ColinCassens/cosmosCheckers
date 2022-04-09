@@ -70,3 +70,9 @@ const (
 const (
 	StoredGameEventWager = "Wager"
 )
+
+const (
+    CreateGameGas = 10
+    PlayMoveGas   = 10
+    RejectGameGas = 0
+)

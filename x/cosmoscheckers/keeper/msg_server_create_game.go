@@ -52,6 +52,9 @@ func (k msgServer) CreateGame(goCtx context.Context, msg *types.MsgCreateGame) (
 		),
 	)
 
+	//Consume Gas
+	ctx.GasMeter().ConsumeGas(types.CreateGameGas, "Create Game Gas")
+
 	return &types.MsgCreateGameResponse{
 		IdValue: newIndex,
 	}, nil

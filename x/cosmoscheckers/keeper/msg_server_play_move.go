@@ -101,6 +101,9 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 		),
 	)
 
+	//Consume Gas
+	ctx.GasMeter().ConsumeGas(types.PlayMoveGas, "Play Move Gas")
+
 	//Return Relevant info
 	return &types.MsgPlayMoveResponse{
 		IdValue:   msg.IdValue,
